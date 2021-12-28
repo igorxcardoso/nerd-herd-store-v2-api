@@ -6,7 +6,7 @@ This is version 2 of my store in Ruby On Rails and React.JS
 
 ## Author
 
-* **Igor Cardoso** - *Initial work* - [ig-cardoso](https://github.com/igorxcardoso)
+* **Igor Cardoso** - *Initial work* - [igorxcardoso](https://github.com/igorxcardoso)
 
 ## License
 
