@@ -41,6 +41,6 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def product_params
-    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params) # Deserialization of params
   end
 end
