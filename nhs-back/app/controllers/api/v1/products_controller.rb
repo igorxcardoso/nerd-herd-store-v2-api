@@ -4,7 +4,7 @@ class Api::V1::ProductsController < ApplicationController
   def index
     @products = Product.all
 
-    render json: @products
+    render(json: @products)
   end
 
   # GET api/v1/products/1
@@ -31,6 +31,11 @@ class Api::V1::ProductsController < ApplicationController
 
   # PATCH/PUT api/v1/products/1
   def update
+    if @product.update(product_params)
+      render json: @product, status: :created
+    else
+      render json: @product.erros, status: :unprocessable_entity
+    end
   end
 
   # DELETE api/v1/products/1
