@@ -46,7 +46,8 @@ class Api::V1::ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = Product.includes(:stocks, :contents).find_by_id(params[:id])
+    # @product = Product.find_by_id(params[:id])
   end
 
   def product_params
