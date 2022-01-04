@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_29_042226) do
+ActiveRecord::Schema.define(version: 2021_12_29_191735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "contents", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "url"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_contents_on_product_id"
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "title"
@@ -31,5 +40,6 @@ ActiveRecord::Schema.define(version: 2021_12_29_042226) do
     t.index ["product_id"], name: "index_stocks_on_product_id"
   end
 
+  add_foreign_key "contents", "products"
   add_foreign_key "stocks", "products"
 end
