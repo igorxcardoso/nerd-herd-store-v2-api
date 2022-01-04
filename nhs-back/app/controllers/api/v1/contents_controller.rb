@@ -30,7 +30,6 @@ class Api::V1::ContentsController < ApplicationController
 
   # PATCH/PUT api/v1/contents/1
   def update
-    byebug
     if @content.update(content_params)
       render json: @content, status: :created
     else
