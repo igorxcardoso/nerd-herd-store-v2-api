@@ -1,4 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
+  before_action :set_product, only: %i[show update destroy]
 
   # GET api/v1/products
   def index
@@ -9,8 +10,6 @@ class Api::V1::ProductsController < ApplicationController
 
   # GET api/v1/products/1
   def show
-    @product = Product.find(params[:id])
-
     if @product.nil?
       render json: ErrorSerializer.serialize(@product.errors), status: :unprocessable_entity
     else
@@ -43,7 +42,12 @@ class Api::V1::ProductsController < ApplicationController
     @product.destroy
   end
 
+
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
   def product_params
     ActiveModelSerializers::Deserialization.jsonapi_parse(params) # Deserialization of params
