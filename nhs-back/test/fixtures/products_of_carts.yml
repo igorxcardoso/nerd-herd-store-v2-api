@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: one
+  length_product: 1
+  price_for_product: 1.5
+  'off': 1.5
+
+two:
+  product: two
+  length_product: 1
+  price_for_product: 1.5
+  'off': 1.5

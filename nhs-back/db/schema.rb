@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_04_183023) do
+ActiveRecord::Schema.define(version: 2022_01_05_130143) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(version: 2022_01_04_183023) do
     t.string "code_bar"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "description"
+    t.float "price_unit"
+  end
+
+  create_table "products_of_carts", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.integer "length_product"
+    t.float "price_for_product"
+    t.float "off_for_product"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["product_id"], name: "index_products_of_carts_on_product_id"
   end
 
   create_table "stocks", force: :cascade do |t|
@@ -41,5 +53,6 @@ ActiveRecord::Schema.define(version: 2022_01_04_183023) do
   end
 
   add_foreign_key "contents", "products"
+  add_foreign_key "products_of_carts", "products"
   add_foreign_key "stocks", "products"
 end
