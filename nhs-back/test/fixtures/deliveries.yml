@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  price_delivery: 1.5
+  cep: MyString
+  address: MyString
+
+two:
+  price_delivery: 1.5
+  cep: MyString
+  address: MyString
