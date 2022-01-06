@@ -1,3 +1,3 @@
 class ShoppingCart < ApplicationRecord
-  belongs_to :delivery, dependent: :destroy
+  # belongs_to :delivery, dependent: :destroy
 end
