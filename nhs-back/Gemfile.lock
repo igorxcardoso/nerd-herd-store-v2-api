@@ -44,6 +44,9 @@ GEM
       activemodel (>= 4.1, < 6.2)
       case_transform (>= 0.2)
       jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
+    active_model_serializers-jsonapi_embedded_records_deserializer (0.1.1)
+      active_model_serializers
+      railties (>= 4.0)
     activejob (6.1.4.4)
       activesupport (= 6.1.4.4)
       globalid (>= 0.3.6)
@@ -76,6 +79,8 @@ GEM
     erubi (1.10.0)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.15.4)
     globalid (1.0.0)
       activesupport (>= 5.0)
@@ -158,9 +163,11 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.0)
+  active_model_serializers-jsonapi_embedded_records_deserializer
   bootsnap (>= 1.4.4)
   byebug
   faker
+  fast_jsonapi
   listen (~> 3.3)
   pg (~> 1.1)
   puma (~> 5.0)
