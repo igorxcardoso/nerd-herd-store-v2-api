@@ -30,7 +30,8 @@ class Api::V1::ShoppingCartsController < ApplicationController
 
   # PATCH/PUT api/v1/shopping_carts/1
   def update
-    if @shopping_cart.update(delivery_params)
+    # if check_availability(@shopping_cart) && @shopping_cart.update(delivery_params)
+    if @shopping_cart.update(total_price: sum_price_shopping_car)
       render json: @shopping_cart, status: :created
     else
       render json: @shopping_cart.erros, status: :unprocessable_entity
@@ -43,6 +44,24 @@ class Api::V1::ShoppingCartsController < ApplicationController
   end
 
   private
+
+  # def check_availability(shopping_carts)
+  #   @products_of_cart = ProductsOfCart.where(shopping_cart_id: shopping_carts.id)
+  #   # stock = Stock.find_by(product_id: )
+  #   byebug
+  #   true
+  # end
+
+  def sum_price_shopping_car
+    sum = @shopping_cart.total_price
+    @products_of_cart = ProductsOfCart.where(shopping_cart_id: @shopping_cart.id)
+    @products_of_cart.each do |p|
+      total = p.length_product*p.price_for_product
+      sum += total-(total*p.off_for_product)
+    end
+    sum
+  end
+
 
   def set_shopping_cart
     @shopping_cart = ShoppingCart.find(params[:id])
